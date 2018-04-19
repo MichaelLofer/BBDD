@@ -1,6 +1,6 @@
 /*
 Created		13/03/2018
-Modified		17/04/2018
+Modified		19/04/2018
 Project		
 Model			
 Company		
@@ -108,7 +108,7 @@ Create table "Opinion"
 
 Create table "Telefono"
 (
-	"numero" Integer NOT NULL UNIQUE,
+	"numero" Bigint NOT NULL UNIQUE,
 	"DNI" Char(10) NOT NULL,
  primary key ("numero","DNI")
 ) Without Oids;
