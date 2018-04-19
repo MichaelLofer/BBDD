@@ -1,0 +1,43 @@
+﻿INSERT INTO public."Surtidor"(
+		"Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+		"Fecha_Reapertura", "Descripcion")
+	VALUES (1, 1.275, 1000, '2010-03-12 12:12:12', null, 'BONITO');
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (2, 1.403, 1000, '1988-12-13 15:13:14', 
+            null, 'BONITO');
+
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (3, 0.852, 900, '1957-01-23 11:11:14', 
+            null, 'MUY BONITO');
+
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (4, 1.254, 1200, '1975-02-07 14:00:23', 
+            '2098-06-18 13:13:13', 'EL CUTRILLO');
+
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (5, 1.180, 1000, '1492-02-08 11:05:03', 
+            null, 'BONITO');      
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (6, 0.657, 500, '1998-08-08 19:30:33', 
+            null, 'MUY BONITO');
+
+INSERT INTO public."Surtidor"(
+            "Numero_surtidor", "Precio", "Capacidad", "Fecha_Reabastecimiento", 
+            "Fecha_Reapertura", "Descripcion")
+    VALUES (7, 0.514, 700, '1998-10-04 15:14:16', 
+            null, 'MASTODONTICO');
