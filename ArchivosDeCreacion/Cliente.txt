@@ -1,0 +1,8 @@
+﻿INSERT INTO public."Cliente"(
+            "Nombre_Usuario", "DNI", "Nombre", "Correo")
+    VALUES ('El chuches', '44150783Y', 'Pepe Castello', 'qqq@hotmail.es'),
+
+    ('Jordi ENP', '95551913T', 'Luis Fuentes', 'jisusesbien@gmail.com'),
+    ('Tu gasolinero', '612447469R', 'Domingo Martes', 'vibaio@yahoo.org'),
+    ('La gran manguera', '32491205W', 'Luisa Zaplana', 'errornotfound@gmail.net'),
+    ('Mmmmm gasss', '48053069C', 'Marta Izquierdo', 'micorreojajaxd@hotmail.es')

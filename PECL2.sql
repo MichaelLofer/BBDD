@@ -91,7 +91,6 @@ Create table "Cliente"
 	"DNI" Char(10) NOT NULL UNIQUE,
 	"Nombre" Char(20) NOT NULL,
 	"Correo" Char(20) NOT NULL UNIQUE,
-	"Puntos" Integer NOT NULL,
  primary key ("Nombre_Usuario")
 ) Without Oids;
 
