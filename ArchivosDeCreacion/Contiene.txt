@@ -1,0 +1,27 @@
+﻿INSERT INTO public."Contiene"(
+            "Codigo", "Tipo", "Codigo_Barras", cantidad)
+    VALUES ('AAA0', 'Panaderia', 'jha-sfe-aedw', 1),
+
+('AAA0', 'Panaderia', 'aso-LJk-08SS', 1),
+('AAA0', 'Panaderia', 'osk-iw9-IS8K', 2),
+('AAA0', 'Panaderia', 'kja-pkJ-232r', 1),
+('AAA1', 'Ultramarinos', 'hs8-pqw-H78', 1),
+('AAA1', 'Ultramarinos', 'hsi-JS7-js7y', 2),
+('AAA2', 'Kiosko', 'LM8-gsi-6tYd', 1),
+('AAA2', 'Kiosko', 'bcy-JGH-98HJ', 2),
+('AAA2', 'Kiosko', 'bnc-mbU-OP87', 2),
+('AAA3', 'Libreria', 'iKl-ks7-Jh0e', 1),
+('AAA4', 'Kiosko', 'LM8-gsi-6tYd', 2),
+('AAA5', 'Cafeteria', 'wef-rKM-dD93', 3),
+('AAA5', 'Cafeteria', 'Ldp-fFh-203m', 2),
+('AAA6', 'Kiosko', 'bcy-JGH-98HJ', 1),
+('AAA6', 'Kiosko', 'bnc-mbU-OP87', 4),
+('AAA6', 'Kiosko', 'LM8-gsi-6tYd',2),
+('AAA7', 'Panaderia', 'jha-sfe-aedw', 1),
+('AAA8', 'Ultramarinos', 'hs8-pqw-H78',	2),
+('AAA8', 'Ultramarinos', 'hsi-JS7-js7y', 2),
+('AAA8', 'Ultramarinos', 'Akn-3jn-NS9',	1),
+('AAA9', 'Cafeteria', 'Ldp-fFh-203m', 1),
+('AAA9', 'Cafeteria', 'FAT-B66-CFu7', 3),
+('AAB0', 'Cafeteria', 'FAT-B66-CFu7', 4),
+('AAB0', 'Cafeteria', 'Ldp-fFh-203m', 2)

@@ -1,0 +1,8 @@
+﻿INSERT INTO public."Canjea"(
+            "Nombre_Usuario", "Codigo_Barras", "Puntos_canjeados", "Fecha")
+    VALUES ('Mmmmm gasss', 'iKl-ks7-Jh0e', 20, '2049-11-21 02:43:54'),
+
+('Mmmmm gasss', 'wef-rKM-dD93', 10, '5050-10-22 08:43:55'),
+('Tu gasolinero', 'iKl-ks7-Jh0e', 20, '2018-03-30 12:13:26'),
+('La gran manguera', 'kja-pkJ-232r', 15, '2000-04-12 15:23:27'),
+('Mmmmm gasss', 'iKl-ks7-Jh0e', 20, '2032-01-11 05:21:08')
