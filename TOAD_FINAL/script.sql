@@ -95,6 +95,7 @@ Create table "Cliente"
 	"Nombre" Char(20) NOT NULL,
 	"Correo" Char(20) NOT NULL UNIQUE,
 	"Puntos" Integer NOT NULL,
+	"Contrasena" Char(20) NOT NULL,
  primary key ("Nombre_Usuario")
 ) Without Oids;
 
