@@ -163,7 +163,7 @@ Create table "Canjea"
 	"Codigo_Barras" Char(40) NOT NULL,
 	"Puntos_canjeados" Integer NOT NULL,
 	"Fecha_canjeado" Time with time zone NOT NULL UNIQUE,
- primary key ("Nombre_Usuario","Codigo_Barras","Fecha_canjeado")
+ primary key ("Fecha_canjeado")
 ) Without Oids;
 
 
@@ -174,7 +174,7 @@ Create table "reposta"
 	"puntos" Integer NOT NULL,
 	"litros" Double precision NOT NULL,
 	"Fecha" Timestamp with time zone NOT NULL UNIQUE,
- primary key ("Nombre_Usuario","Numero_surtidor","Fecha")
+ primary key ("Fecha")
 ) Without Oids;
 
 
@@ -184,7 +184,7 @@ Create table "Contiene"
 	"Tipo" Char(20) NOT NULL,
 	"Codigo_Barras" Char(40) NOT NULL,
 	"cantidad" Integer NOT NULL,
- primary key ("Codigo","Tipo","Codigo_Barras")
+ primary key ("Codigo","Tipo")
 ) Without Oids;
 
 
@@ -216,7 +216,7 @@ Alter table "Hidrogeno" add  foreign key ("Numero_surtidor") references "Surtido
 
 Alter table "Empleado" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
-Alter table "reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete cascade;
+Alter table "reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
 Alter table "Empleado" add  foreign key ("Tipo") references "Tienda" ("Tipo") on update cascade on delete set null;
 
@@ -226,9 +226,9 @@ Alter table "Ticket" add  foreign key ("Tipo") references "Tienda" ("Tipo") on u
 
 Alter table "Contiene" add  foreign key ("Codigo","Tipo") references "Ticket" ("Codigo","Tipo") on update cascade on delete cascade;
 
-Alter table "Canjea" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete cascade;
+Alter table "Canjea" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete set null;
 
-Alter table "Contiene" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete cascade;
+Alter table "Contiene" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete set null;
 
 Alter table "Canjea" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
 
