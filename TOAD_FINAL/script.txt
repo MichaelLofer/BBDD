@@ -78,7 +78,7 @@ Create table "Ticket"
 ) Without Oids;
 
 
-Create table "Aritculo"
+Create table "Articulo"
 (
 	"Codigo_Barras" Char(40) NOT NULL UNIQUE,
 	"PvP" Double precision NOT NULL,
@@ -216,7 +216,7 @@ Alter table "Hidrogeno" add  foreign key ("Numero_surtidor") references "Surtido
 
 Alter table "Empleado" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
-Alter table "reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete cascade;
+Alter table "reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
 Alter table "Empleado" add  foreign key ("Tipo") references "Tienda" ("Tipo") on update cascade on delete set null;
 
@@ -226,9 +226,9 @@ Alter table "Ticket" add  foreign key ("Tipo") references "Tienda" ("Tipo") on u
 
 Alter table "Contiene" add  foreign key ("Codigo","Tipo") references "Ticket" ("Codigo","Tipo") on update cascade on delete cascade;
 
-Alter table "Canjea" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete cascade;
+Alter table "Canjea" add  foreign key ("Codigo_Barras") references "Articulo" ("Codigo_Barras") on update cascade on delete set null;
 
-Alter table "Contiene" add  foreign key ("Codigo_Barras") references "Aritculo" ("Codigo_Barras") on update cascade on delete cascade;
+Alter table "Contiene" add  foreign key ("Codigo_Barras") references "Articulo" ("Codigo_Barras") on update cascade on delete set null;
 
 Alter table "Canjea" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
 
@@ -536,13 +536,13 @@ begin
  		raise exception ''Parent does not exist in table "Cliente". Cannot update child table "Canjea".'';
  	end if;
  end if;	
- /* Check parent table "Aritculo", when child table "Canjea" changes. */
+ /* Check parent table "Articulo", when child table "Canjea" changes. */
  if new."Codigo_Barras" != old."Codigo_Barras" then
  	select count(*) into nRows
- 	from "Aritculo"
- 	where new."Codigo_Barras" = "Aritculo"."Codigo_Barras";
+ 	from "Articulo"
+ 	where new."Codigo_Barras" = "Articulo"."Codigo_Barras";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Aritculo". Cannot update child table "Canjea".'';
+ 		raise exception ''Parent does not exist in table "Articulo". Cannot update child table "Canjea".'';
  	end if;
  end if;	
  
@@ -611,13 +611,13 @@ begin
  		raise exception ''Parent does not exist in table "Ticket". Cannot update child table "Contiene".'';
  	end if;
  end if;	
- /* Check parent table "Aritculo", when child table "Contiene" changes. */
+ /* Check parent table "Articulo", when child table "Contiene" changes. */
  if new."Codigo_Barras" != old."Codigo_Barras" then
  	select count(*) into nRows
- 	from "Aritculo"
- 	where new."Codigo_Barras" = "Aritculo"."Codigo_Barras";
+ 	from "Articulo"
+ 	where new."Codigo_Barras" = "Articulo"."Codigo_Barras";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Aritculo". Cannot update child table "Contiene".'';
+ 		raise exception ''Parent does not exist in table "Articulo". Cannot update child table "Contiene".'';
  	end if;
  end if;	
  
@@ -910,13 +910,13 @@ begin
  		raise exception ''Parent does not exist in table "Cliente". Cannot insert values into child table "Canjea".'';
  	end if;	
  end if;	
- /* Check parent table "Aritculo" when values inserted into child table "Canjea" */
+ /* Check parent table "Articulo" when values inserted into child table "Canjea" */
  if new."Codigo_Barras" is not null then
  	select count(*) into nRows
- 	from "Aritculo"
- 	where new."Codigo_Barras" = "Aritculo"."Codigo_Barras";
+ 	from "Articulo"
+ 	where new."Codigo_Barras" = "Articulo"."Codigo_Barras";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Aritculo". Cannot insert values into child table "Canjea".'';
+ 		raise exception ''Parent does not exist in table "Articulo". Cannot insert values into child table "Canjea".'';
  	end if;	
  end if;	
  
@@ -983,13 +983,13 @@ begin
  		raise exception ''Parent does not exist in table "Ticket". Cannot insert values into child table "Contiene".'';
  	end if;	
  end if;	
- /* Check parent table "Aritculo" when values inserted into child table "Contiene" */
+ /* Check parent table "Articulo" when values inserted into child table "Contiene" */
  if new."Codigo_Barras" is not null then
  	select count(*) into nRows
- 	from "Aritculo"
- 	where new."Codigo_Barras" = "Aritculo"."Codigo_Barras";
+ 	from "Articulo"
+ 	where new."Codigo_Barras" = "Articulo"."Codigo_Barras";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Aritculo". Cannot insert values into child table "Contiene".'';
+ 		raise exception ''Parent does not exist in table "Articulo". Cannot insert values into child table "Contiene".'';
  	end if;	
  end if;	
  
