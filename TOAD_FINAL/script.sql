@@ -163,11 +163,11 @@ Create table "Canjea"
 ) Without Oids;
 
 
-Create table "reposta"
+Create table "Reposta"
 (
-	"Nombre_Usuario" Char(50) NOT NULL,
+	"Nombre_Usuario" Char(50),
 	"Numero_surtidor" Integer NOT NULL,
-	"puntos" Integer NOT NULL,
+	"puntos" Integer,
 	"litros" Double precision NOT NULL,
 	"Fecha" Timestamp with time zone NOT NULL UNIQUE,
  primary key ("Fecha")
@@ -213,7 +213,7 @@ Alter table "Hidrogeno" add  foreign key ("Numero_surtidor") references "Surtido
 
 Alter table "Empleado" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
-Alter table "reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
+Alter table "Reposta" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete set null;
 
 Alter table "Empleado" add  foreign key ("Tipo") references "Tienda" ("Tipo") on update cascade on delete set null;
 
@@ -231,7 +231,7 @@ Alter table "Canjea" add  foreign key ("Nombre_Usuario") references "Cliente" ("
 
 Alter table "Opinion" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
 
-Alter table "reposta" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
+Alter table "Reposta" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
 
 
 
@@ -552,31 +552,31 @@ Create trigger "tu_Canjea"
 after update on "Canjea"
 for each row execute procedure "fn_tu_Canjea"();
 
-/* Referential integrity for update on table "reposta" */
+/* Referential integrity for update on table "Reposta" */
  
-/* Function "fn_tu_reposta"() for trigger "tu_reposta" */
-Create function "fn_tu_reposta"() returns trigger as '
+/* Function "fn_tu_Reposta"() for trigger "tu_Reposta" */
+Create function "fn_tu_Reposta"() returns trigger as '
 declare
 	nRows integer;	
 	maxCard integer;										 
 begin
 	 
-	/* Check parent table "Cliente", when child table "reposta" changes. */
+	/* Check parent table "Cliente", when child table "Reposta" changes. */
  if new."Nombre_Usuario" != old."Nombre_Usuario" then
  	select count(*) into nRows
  	from "Cliente"
  	where new."Nombre_Usuario" = "Cliente"."Nombre_Usuario";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Cliente". Cannot update child table "reposta".'';
+ 		raise exception ''Parent does not exist in table "Cliente". Cannot update child table "Reposta".'';
  	end if;
  end if;	
- /* Check parent table "Surtidor", when child table "reposta" changes. */
+ /* Check parent table "Surtidor", when child table "Reposta" changes. */
  if new."Numero_surtidor" != old."Numero_surtidor" then
  	select count(*) into nRows
  	from "Surtidor"
  	where new."Numero_surtidor" = "Surtidor"."Numero_surtidor";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Surtidor". Cannot update child table "reposta".'';
+ 		raise exception ''Parent does not exist in table "Surtidor". Cannot update child table "Reposta".'';
  	end if;
  end if;	
  
@@ -584,10 +584,10 @@ return old;
 end;'
 language 'plpgsql';
 					
-/* Update trigger "tu_reposta" for table "reposta" */
-Create trigger "tu_reposta"
-after update on "reposta"
-for each row execute procedure "fn_tu_reposta"();
+/* Update trigger "tu_Reposta" for table "Reposta" */
+Create trigger "tu_Reposta"
+after update on "Reposta"
+for each row execute procedure "fn_tu_Reposta"();
 
 /* Referential integrity for update on table "Contiene" */
  
@@ -926,30 +926,30 @@ Create trigger "ti_Canjea"
 before insert on "Canjea"
 for each row execute procedure "fn_ti_Canjea"();
 
-/* Referential integrity for insert on table "reposta" */
+/* Referential integrity for insert on table "Reposta" */
  
-/* Function "fn_ti_reposta"() for trigger "ti_reposta" */
-Create function "fn_ti_reposta"() returns trigger as '
+/* Function "fn_ti_Reposta"() for trigger "ti_Reposta" */
+Create function "fn_ti_Reposta"() returns trigger as '
 declare
 	nRows integer;	
 	maxCard integer;										 
 begin
-	/* Check parent table "Cliente" when values inserted into child table "reposta" */
+	/* Check parent table "Cliente" when values inserted into child table "Reposta" */
  if new."Nombre_Usuario" is not null then
  	select count(*) into nRows
  	from "Cliente"
  	where new."Nombre_Usuario" = "Cliente"."Nombre_Usuario";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Cliente". Cannot insert values into child table "reposta".'';
+ 		raise exception ''Parent does not exist in table "Cliente". Cannot insert values into child table "Reposta".'';
  	end if;	
  end if;	
- /* Check parent table "Surtidor" when values inserted into child table "reposta" */
+ /* Check parent table "Surtidor" when values inserted into child table "Reposta" */
  if new."Numero_surtidor" is not null then
  	select count(*) into nRows
  	from "Surtidor"
  	where new."Numero_surtidor" = "Surtidor"."Numero_surtidor";
  	if (nRows = 0) then
- 		raise exception ''Parent does not exist in table "Surtidor". Cannot insert values into child table "reposta".'';
+ 		raise exception ''Parent does not exist in table "Surtidor". Cannot insert values into child table "Reposta".'';
  	end if;	
  end if;	
  
@@ -957,10 +957,10 @@ return new;
 end;'
 language 'plpgsql';
 					
-/* Insert trigger "ti_reposta" for table "reposta" */
-Create trigger "ti_reposta"
-before insert on "reposta"
-for each row execute procedure "fn_ti_reposta"();
+/* Insert trigger "ti_Reposta" for table "Reposta" */
+Create trigger "ti_Reposta"
+before insert on "Reposta"
+for each row execute procedure "fn_ti_Reposta"();
 
 /* Referential integrity for insert on table "Contiene" */
  
