@@ -1,6 +1,6 @@
 /*
-Created		13/3/18
-Modified		20/4/18
+Created		13/03/2018
+Modified		21/04/2018
 Project		
 Model			
 Company		
@@ -20,19 +20,19 @@ Database		PostgreSQL 8.1
 
 Create table "Empleado"
 (
-	"DNI" Char(10) NOT NULL UNIQUE,
-	"dni_jefe" Char(10),
-	"Sexo" Char(10) NOT NULL,
+	"DNI" Char(20) NOT NULL UNIQUE,
+	"dni_jefe" Char(20),
+	"Sexo" Char(20) NOT NULL,
 	"Correo" Char(80) NOT NULL UNIQUE,
-	"Turno" Char(20) NOT NULL,
-	"Nombre" Char(40) NOT NULL,
+	"Turno" Char(30) NOT NULL,
+	"Nombre" Char(60) NOT NULL,
 	"Localidad" Char(40) NOT NULL,
 	"Calle" Char(40) NOT NULL,
 	"Numero" Integer NOT NULL,
-	"Piso" Char(10),
+	"Piso" Char(20),
 	"CP" Integer NOT NULL,
 	"Numero_surtidor" Integer,
-	"Tipo" Char(20),
+	"Tipo" Char(50),
  primary key ("DNI")
 ) Without Oids;
 
@@ -51,7 +51,7 @@ Create table "Surtidor"
 
 Create table "Tienda"
 (
-	"Tipo" Char(20) NOT NULL UNIQUE,
+	"Tipo" Char(50) NOT NULL UNIQUE,
 	"Horario" Char(40) NOT NULL,
  primary key ("Tipo")
 ) Without Oids;
@@ -59,19 +59,19 @@ Create table "Tienda"
 
 Create table "Oferta"
 (
-	"Tipo_Oferta" Char(20) NOT NULL,
+	"Tipo_Oferta" Char(50) NOT NULL,
 	"Duracion" Integer NOT NULL,
 	"Fecha_inicio" Timestamp with time zone NOT NULL UNIQUE,
-	"Tipo" Char(20) NOT NULL,
+	"Tipo" Char(50) NOT NULL,
  primary key ("Tipo_Oferta","Tipo")
 ) Without Oids;
 
 
 Create table "Ticket"
 (
-	"Codigo" Integer NOT NULL UNIQUE,
+	"Codigo" Char(20) NOT NULL UNIQUE,
 	"Fecha_emision" Timestamp with time zone NOT NULL UNIQUE,
-	"Tipo" Char(20) NOT NULL,
+	"Tipo" Char(50) NOT NULL,
 	"Fecha_premiado" Timestamp with time zone UNIQUE,
  primary key ("Codigo","Tipo")
 ) Without Oids;
@@ -79,7 +79,7 @@ Create table "Ticket"
 
 Create table "Articulo"
 (
-	"Codigo_Barras" Char(40) NOT NULL UNIQUE,
+	"Codigo_Barras" Char(60) NOT NULL UNIQUE,
 	"PvP" Double precision NOT NULL,
  primary key ("Codigo_Barras")
 ) Without Oids;
@@ -87,12 +87,11 @@ Create table "Articulo"
 
 Create table "Cliente"
 (
-	"Nombre_Usuario" Char(20) NOT NULL UNIQUE,
-	"DNI" Char(10) NOT NULL UNIQUE,
-	"Nombre" Char(20) NOT NULL,
-	"Correo" Char(20) NOT NULL UNIQUE,
-	"Puntos" Integer NOT NULL,
-	"Contrasena" Char(20) NOT NULL,
+	"Nombre_Usuario" Char(50) NOT NULL UNIQUE,
+	"DNI" Char(20) NOT NULL UNIQUE,
+	"Nombre" Char(60) NOT NULL,
+	"Correo" Char(100) NOT NULL UNIQUE,
+	"Contrasena" Char(40) NOT NULL,
  primary key ("Nombre_Usuario")
 ) Without Oids;
 
@@ -101,16 +100,16 @@ Create table "Opinion"
 (
 	"Fecha_Hora" Timestamp with time zone NOT NULL UNIQUE,
 	"Puntos" Integer NOT NULL,
-	"Opinion" Char(50) NOT NULL,
-	"Nombre_Usuario" Char(20) NOT NULL,
+	"Opinion" Char(100) NOT NULL,
+	"Nombre_Usuario" Char(50) NOT NULL,
  primary key ("Fecha_Hora","Nombre_Usuario")
 ) Without Oids;
 
 
 Create table "Telefono"
 (
-	"numero" Integer NOT NULL UNIQUE,
-	"DNI" Char(10) NOT NULL,
+	"numero" Bigint NOT NULL UNIQUE,
+	"DNI" Char(20) NOT NULL,
  primary key ("numero","DNI")
 ) Without Oids;
 
@@ -129,7 +128,7 @@ Create table "Hidrogeno"
 	"Numero" Integer NOT NULL UNIQUE,
 	"Numero_surtidor" Integer NOT NULL,
 	"Temperatura" Double precision NOT NULL,
-	"Aislante" Char(20) NOT NULL,
+	"Aislante" Char(40) NOT NULL,
 	"Densidad" Double precision NOT NULL,
  primary key ("Numero")
 ) Without Oids;
@@ -156,8 +155,8 @@ Create table "GLP"
 
 Create table "Canjea"
 (
-	"Nombre_Usuario" Char(20) NOT NULL,
-	"Codigo_Barras" Char(40) NOT NULL,
+	"Nombre_Usuario" Char(50) NOT NULL,
+	"Codigo_Barras" Char(60) NOT NULL,
 	"Puntos_canjeados" Integer NOT NULL,
 	"Fecha_canjeado" Time with time zone NOT NULL UNIQUE,
  primary key ("Fecha_canjeado")
@@ -166,7 +165,7 @@ Create table "Canjea"
 
 Create table "reposta"
 (
-	"Nombre_Usuario" Char(20) NOT NULL,
+	"Nombre_Usuario" Char(50) NOT NULL,
 	"Numero_surtidor" Integer NOT NULL,
 	"puntos" Integer NOT NULL,
 	"litros" Double precision NOT NULL,
@@ -177,11 +176,12 @@ Create table "reposta"
 
 Create table "Contiene"
 (
-	"Codigo" Integer NOT NULL,
-	"Tipo" Char(20) NOT NULL,
-	"Codigo_Barras" Char(40) NOT NULL,
+	"Codigo" Char(20) NOT NULL,
+	"Tipo" Char(50) NOT NULL,
+	"Codigo_Barras" Char(60) NOT NULL,
 	"cantidad" Integer NOT NULL,
- primary key ("Codigo","Tipo")
+	"Fecha" Timestamp with time zone NOT NULL UNIQUE,
+ primary key ("Codigo","Tipo","Fecha")
 ) Without Oids;
 
 
