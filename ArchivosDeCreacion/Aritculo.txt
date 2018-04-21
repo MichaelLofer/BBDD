@@ -1,4 +1,4 @@
-﻿INSERT INTO public."Aritculo"(
+﻿INSERT INTO public."Articulo"(
             "Codigo_Barras", "PvP")
     VALUES ('jha-sfe-aedw', 12),
 	('Akn-3jn-NS9', 20),
@@ -13,4 +13,6 @@
 	('wef-rKM-dD93', 1),
 	('aso-LJk-08SS', 4),
 	('osk-iw9-IS8K', 6),
-	('kja-pkJ-232r', 4)
+	('kja-pkJ-232r', 4),
+	('gha-GTn-s12r', 4),
+	('Zma-Vkz-dj8x', 4)
