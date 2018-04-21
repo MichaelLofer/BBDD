@@ -1,8 +1,10 @@
-﻿(SELECT AVG("Precio") AS "PRECIO MEDIO", AVG("Capacidad") AS "CAPACIDAD MEDIA"
-	FROM "Surtidor"
-	INNER JOIN "Gasolina" ON "Surtidor"."Numero_surtidor" = "Gasolina"."Numero_surtidor")
+﻿(SELECT "Surtidor"."Descripcion" AS "TIPO", AVG ("Surtidor"."Precio") AS "PRECIO MEDIO", AVG ("Surtidor"."Capacidad") AS "CAPACIDAD MEDIA"
+	FROM "Gasolina"
+	INNER JOIN "Surtidor" ON "Gasolina"."Numero_surtidor" = "Surtidor"."Numero_surtidor"
+	GROUP BY "TIPO")
 UNION
-(SELECT AVG("Precio") AS "PRECIO MEDIO", AVG("Capacidad") AS "CAPACIDAD MEDIA"
-	FROM "Surtidor"
-	INNER JOIN "Gasoleo" ON "Surtidor"."Numero_surtidor" = "Gasoleo"."Numero_surtidor")	
+(SELECT "Surtidor"."Descripcion" AS "TIPO", AVG ("Surtidor"."Precio") AS "PRECIO MEDIO", AVG ("Surtidor"."Capacidad") AS "CAPACIDAD MEDIA"
+	FROM "Gasoleo"
+	INNER JOIN "Surtidor" ON "Gasoleo"."Numero_surtidor" = "Surtidor"."Numero_surtidor"
+	GROUP BY "TIPO")
 	
