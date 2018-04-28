@@ -1,0 +1,3 @@
+﻿INSERT INTO public."GLP"(
+            "Numero", "Numero_surtidor", "Temperatura", "Presion")
+    VALUES (4656, 6, 24, 5609);

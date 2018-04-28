@@ -1,0 +1,5 @@
+﻿INSERT INTO public."Contiene"(
+            "Codigo", "Tipo", "Codigo_Barras", cantidad)
+    VALUES ('AAA2', 'Kiosko', 'LM8-gsi-6tYd', 1),
+('AAA2', 'Kiosko', 'bcy-JGH-98HJ', 2),
+('AAA2', 'Kiosko', 'bnc-mbU-OP87', 2)

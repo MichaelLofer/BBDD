@@ -1,0 +1,14 @@
+﻿INSERT INTO public."Empleado"("DNI", dni_jefe, "Sexo", "Correo", "Turno", "Nombre", "Localidad", 
+            "Calle", "Numero", "Piso", "CP", "Numero_surtidor", "Tipo")
+
+    VALUES('64610936A', '82423423V', 'HOMBRE', 'merlinomadrigar@gmail.com', 'TARDE', 'Merlino Madrigal Rosado', 'Lerma', 'Reyes Catolicos',
+	    80, '3A', 09340, 6, null), 
+
+    ('41271741N', '82423423V', 'MUJER', 'hola.pasoapasoblog@gmail.com', 'MAÑANA', 'Natolia Pasoa Paso', 'Pontevedra', 'Ru Castelao',
+	    18, '5X', 78872, 6, null),
+
+    ('38544138W', '82423423V', 'MUJER', 'ccmaster@ujrc.es', 'MAÑANA', 'Cristina Cifuentes Cuencas', 'Madrid', 'Genova',
+            13, '1A', 28004, 5, null),
+
+    ('56588204Q', '82423423V', 'HOMBRE', 'republicano69@upyd.net', 'TARDE', 'Pablo Iglesias Turrion', 'Madrid', 'Matadero',
+            21, '4A', 28012, 5, null)
