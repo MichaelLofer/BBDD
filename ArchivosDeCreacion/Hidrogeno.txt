@@ -1,3 +1,0 @@
-﻿INSERT INTO public."Hidrogeno"(
-            "Numero", "Numero_surtidor", "Temperatura", "Aislante", "Densidad")
-    VALUES (5656, 7, 28, 'DEL BUENO', 9234);

@@ -1,4 +1,0 @@
-﻿INSERT INTO public."Contiene"(
-            "Codigo", "Tipo", "Codigo_Barras", cantidad)
-    VALUES ('AAA9', 'Cafeteria', 'Ldp-fFh-203m', 1),
-('AAA9', 'Cafeteria', 'FAT-B66-CFu7', 3);

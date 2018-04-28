@@ -1,4 +1,0 @@
-﻿INSERT INTO public."Gasolina"(
-            "Tipo", "Numero_surtidor", "Numero")
-    VALUES ('Sin_plomo_98', 1, 6787),
-('Sin_plomo_95', 2, 6866);
