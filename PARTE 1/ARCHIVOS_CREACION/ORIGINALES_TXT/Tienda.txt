@@ -1,0 +1,20 @@
+﻿INSERT INTO public."Tienda"(
+            "Tipo", "Horario")
+    VALUES ('Kiosko', 'MAÑANA');
+
+    INSERT INTO public."Tienda"(
+            "Tipo", "Horario")
+    VALUES ('Ultramarinos', '12H');
+
+INSERT INTO public."Tienda"(
+            "Tipo", "Horario")
+    VALUES ('Libreria', 'TARDE');
+
+INSERT INTO public."Tienda"(
+            "Tipo", "Horario")
+    VALUES ('Panaderia', 'MAÑANA');
+
+INSERT INTO public."Tienda"(
+            "Tipo", "Horario")
+    VALUES ('Cafeteria', '12H');
+

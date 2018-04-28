@@ -1,0 +1,14 @@
+﻿INSERT INTO public."Ticket"(
+            "Codigo", "Fecha_emision", "Tipo", "Fecha_premiado")
+    VALUES ('AAA4', '2004-03-04 15:16:14', 'Kiosko', null),
+
+('AAA2', '1789-12-19 17:11:09', 'Kiosko', null),
+('AAA6', '2022-07-02 10:13:15', 'Kiosko', null),
+('AAA1', '1014-01-01 12:23:54', 'Ultramarinos', '1014-01-04 12:23:54'),
+('AAA8', '2045-02-22 19:38:48', 'Ultramarinos', null),
+('AAA3', '2001-05-10 17:40:45', 'Libreria', null),
+('AAA7', '2022-12-07 03:16:54', 'Panaderia', '2022-09-09 03:16:54'),
+('AAA0', '1004-02-23 19:58:19', 'Panaderia', null),
+('AAA5', '2010-08-27 22:16:46', 'Cafeteria', null),
+('AAA9', '2110-11-26 05:06:44', 'Cafeteria', '2110-11-27 05:06:44'),
+('AAB0', '2804-06-16 06:36:15', 'Cafeteria', '2804-06-19 06:36:15')

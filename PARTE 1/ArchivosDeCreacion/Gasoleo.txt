@@ -1,0 +1,6 @@
+﻿INSERT INTO public."Gasoleo"(
+            "Tipo", "Numero_surtidor", "Numero")
+    VALUES ('Diesel', 3, 2393),
+
+('Diesel premium', 4, 2242),
+('Gasoleo bonificado', 5, 2424)
