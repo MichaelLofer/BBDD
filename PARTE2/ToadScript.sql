@@ -73,7 +73,7 @@ Create table "Ticket"
 	"Fecha_emision" Timestamp with time zone NOT NULL UNIQUE,
 	"Tipo" Char(50) NOT NULL,
 	"Fecha_premiado" Timestamp with time zone UNIQUE,
-	"Precio_Compra" Double precision,
+	"Precio_Compra" Double precision NOT NULL,
  primary key ("Codigo","Tipo")
 ) Without Oids;
 
@@ -82,7 +82,7 @@ Create table "Articulo"
 (
 	"Codigo_Barras" Char(60) NOT NULL UNIQUE,
 	"Precio_sin_IVA" Double precision NOT NULL,
-	"PVP" Double precision,
+	"PVP" Double precision NOT NULL,
  primary key ("Codigo_Barras")
 ) Without Oids;
 
@@ -94,7 +94,7 @@ Create table "Cliente"
 	"Nombre" Char(60) NOT NULL,
 	"Correo" Char(100) NOT NULL UNIQUE,
 	"Contrasena" Char(40) NOT NULL,
-	"Puntos" Integer,
+	"Puntos" Integer NOT NULL,
  primary key ("Nombre_Usuario")
 ) Without Oids;
 
