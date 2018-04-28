@@ -1,0 +1,5 @@
+﻿CREATE TRIGGER tr_calcular_sueldo_anual
+	BEFORE INSERT OR UPDATE
+	ON public.empleado
+	FOR EACH ROW
+	EXECUTE PROCEDURE funcion_salario_anual();
