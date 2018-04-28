@@ -16,28 +16,34 @@ import java.sql.SQLException;
 public class ConnectionManager
 {
     private final String url = "jdbc:postgresql://localhost:5432/test";
-    private final String[] user = {"postgres"};
-    private final String[] password = {"sergio"};
+    private final String[] user = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
+    private final String[] password = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
     private Connection conn;
 
     public Connection conect(int permmision) 
     {
         conn = null;
-        try 
+        if (permmision < user.length)
         {
-            Class.forName("org.postgresql.Driver").newInstance(); 
-            conn = DriverManager.getConnection(url, user[permmision], password[permmision]);
-            System.out.println("Conectado!!");
-        } 
-        catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        } 
-        catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) 
-        {
-            System.out.println("Driver no detectado");
+            try 
+            {
+                Class.forName("org.postgresql.Driver").newInstance(); 
+                conn = DriverManager.getConnection(url, user[permmision], password[permmision]);
+                System.out.println("Conectado!!");
+            } 
+            catch (SQLException e)
+            {
+                System.out.println(e.getMessage());
+            } 
+            catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) 
+            {
+                System.out.println("Driver no detectado");
+            }
         }
- 
+        else
+        {
+            System.out.println("ROL NO VALIDO");
+        }
         return conn;
     }
     
