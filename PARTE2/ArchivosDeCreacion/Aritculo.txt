@@ -1,0 +1,19 @@
+﻿INSERT INTO public."Articulo"(
+            "Codigo_Barras", "Precio_sin_IVA", "PVP")
+    VALUES ('jha-sfe-aedw', 12, null),
+	('Akn-3jn-NS9', 20, null),
+	('hsi-JS7-js7y', 16, null),
+	('hs8-pqw-H78', 12, null),
+	('iKl-ks7-Jh0e', 5, null),
+	('LM8-gsi-6tYd', 16, null),
+	('bnc-mbU-OP87', 3, null),
+	('bcy-JGH-98HJ', 5, null),
+	('FAT-B66-CFu7', 9999, null),
+	('Ldp-fFh-203m', 6, null),
+	('wef-rKM-dD93', 1, null),
+	('aso-LJk-08SS', 4, null),
+	('osk-iw9-IS8K', 6, null),
+	('kja-pkJ-232r', 4, null),
+	('gha-GTn-s12r', 4, null),
+	('Zma-Vkz-dj8x', 4, null)
+
