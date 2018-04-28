@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class ConnectionManager
 {
-    private final String url = "jdbc:postgresql://localhost:5432/test";
+    private final String url = "jdbc:postgresql://localhost:5432/BBDD";
     private final String[] user = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
     private final String[] password = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
     private Connection conn;
@@ -29,7 +29,7 @@ public class ConnectionManager
             {
                 Class.forName("org.postgresql.Driver").newInstance(); 
                 conn = DriverManager.getConnection(url, user[permmision], password[permmision]);
-                System.out.println("Conectado!!");
+                //System.out.println("Conectado!!");
             } 
             catch (SQLException e)
             {
@@ -52,7 +52,7 @@ public class ConnectionManager
         try 
         {
             conn.close();
-            System.out.println("Desconectado!!");
+            //System.out.println("Desconectado!!");
         } 
         catch (SQLException ex) 
         {
