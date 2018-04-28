@@ -1,5 +1,0 @@
-﻿INSERT INTO public."Empleado"("DNI", dni_jefe, "Sexo", "Correo", "Turno", "Nombre", "Localidad", 
-            "Calle", "Numero", "Piso", "CP", "Numero_surtidor", "Tipo")
-    
-   VALUES('95904839Z', null, 'EL', 'fascismodelbueno@forocoches.org', 'MAÑANA', 'Ignatius Farray Alamany', 'Madrid', 'Malasaña',
-	    69, '1C', 28004, 3, null)

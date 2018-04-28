@@ -1,5 +1,0 @@
-﻿INSERT INTO public."Oferta"(
-            "Tipo_Oferta", "Duracion", "Fecha_inicio", "Tipo")
-    VALUES ('2x1', 2, '3000-03-15 14:15:16', 'Ultramarinos'),
-	('Todo 50%', 2, '1010-08-6 15:16:14', 'Libreria'),
-	('BARRA PLUS 50cent', 50, '2008-1-22 16:14:15', 'Panaderia')
