@@ -5,6 +5,8 @@
  */
 package simulador_de_consultas;
 
+import simulador_de_consultas.screens.Logger;
+
 /**
  *
  * @author mr.blissfulgrin
@@ -17,7 +19,6 @@ public class BBDD
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
-    }
-    
+        new Logger().setVisible(true);
+    } 
 }
