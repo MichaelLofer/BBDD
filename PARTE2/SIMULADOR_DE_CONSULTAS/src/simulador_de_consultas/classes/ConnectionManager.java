@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class ConnectionManager
 {
-    private final String url = "jdbc:postgresql://localhost:5432/BBDD";
+    private final String url = "jdbc:postgresql://localhost:5432/PECL2";
     private final String[] user = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
     private final String[] password = {"administrador1","gestor1","empleado1","supervisor1","cliente1"};
     private Connection conn;
