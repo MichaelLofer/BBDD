@@ -91,6 +91,10 @@ public class Asker extends javax.swing.JFrame
         display.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         display.setEnabled(false);
         display.setFocusable(false);
+        display.setMaximumSize(new java.awt.Dimension(300, 80));
+        display.setMinimumSize(new java.awt.Dimension(300, 80));
+        display.setPreferredSize(new java.awt.Dimension(300, 80));
+        display.setSize(new java.awt.Dimension(300, 80));
         jScrollPane1.setViewportView(display);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -101,9 +105,9 @@ public class Asker extends javax.swing.JFrame
         gridBagConstraints.ipadx = 223;
         gridBagConstraints.ipady = 63;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weightx = 2.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(14, 29, 29, 20);
+        gridBagConstraints.insets = new java.awt.Insets(14, 38, 29, 33);
         jPanel2.add(jScrollPane1, gridBagConstraints);
 
         c1.setText("Consulta 1");
