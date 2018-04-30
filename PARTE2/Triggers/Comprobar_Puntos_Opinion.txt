@@ -1,0 +1,8 @@
+﻿DECLARE
+
+BEGIN
+	if NEW."Puntos" < 0 or NEW."Puntos" >10 then
+		RAISE EXCEPTION 'LOS PUNTOS TIENEN QUE ESTAR ENTRE 0 Y 10';
+	end if;
+	RETURN NEW;
+END;
