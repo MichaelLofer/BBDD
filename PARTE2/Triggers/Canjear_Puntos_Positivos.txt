@@ -1,0 +1,8 @@
+﻿DECLARE
+
+BEGIN
+	if NEW."Puntos_canjeados" < 0 then
+		RAISE EXCEPTION 'LOS PUNTOS CANJEADOS NO PUEDEN SER NEGATIVOS';
+	end if;
+	RETURN NEW;
+END;

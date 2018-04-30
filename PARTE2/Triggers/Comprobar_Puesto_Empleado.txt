@@ -1,0 +1,8 @@
+﻿DECLARE
+
+BEGIN
+	if  NEW."Numero_surtidor" is not null and NEW."Tipo" is not null then
+		RAISE EXCEPTION 'EL EMPLEADO NO PUEDE TRABAJAR EN UNA TIENDA Y EN UN SURITDOR A LA VEZ';
+	end if;
+	RETURN NEW;
+END;

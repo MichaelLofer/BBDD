@@ -1,0 +1,8 @@
+﻿DECLARE
+
+BEGIN
+	if NEW."Duracion" <= 0 then
+		RAISE EXCEPTION 'LA OFERTA TIENE QUE DURAR AL MENOS UN DIA';
+	end if;
+	RETURN NEW;
+END;

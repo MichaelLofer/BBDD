@@ -1,0 +1,9 @@
+﻿DECLARE
+
+BEGIN
+	if NEW."litros" > (select "Capacidad" from "Surtidor" 
+				where NEW."Numero_surtidor" = "Surtidor"."Numero_surtidor") then
+		RAISE EXCEPTION 'LOS LITROS REPOSTADOS TIENEN QUE SER MENOS QUE LA CAPACIDAD DEL SURTIDOR';
+	end if;
+	RETURN NEW;
+END;
