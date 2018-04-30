@@ -93,7 +93,7 @@ public class Query
         {
             case 1:
                 return "Artículos presentes en la base de datos, mostrando su código y el precio de venta.\n"+
-                        getQuery("SELECT \"Codigo_Barras\", \"PvP\"\n" +
+                        getQuery("SELECT \"Codigo_Barras\", \"PVP\"\n" +
                          "	FROM \"Articulo\"");
             case 2:
                 return "Número total de surtidores que hay en la gasolinera.\n"+
@@ -101,7 +101,7 @@ public class Query
                         "	FROM \"Surtidor\"");
             case 3:
                 return "Total del dinero facturado por las tiendas de la gasolinera desde la implementación de la base de datos.\n"+
-                        getQuery("SELECT \"Tipo\", sum (\"PvP\"*\"cantidad\") as \"Dinero\"\n" +
+                        getQuery("SELECT \"Tipo\", sum (\"PVP\"*\"cantidad\") as \"Dinero\"\n" +
                         "	FROM \"Contiene\"\n" +
                         "	INNER JOIN \"Articulo\" ON \"Contiene\".\"Codigo_Barras\" = \"Articulo\".\"Codigo_Barras\"\n" +
                         "	GROUP BY \"Tipo\"");
@@ -126,7 +126,7 @@ public class Query
                         "	");
             case 7:
                 return "Importe total devuelto en los tickets en todos los sorteos realizados hasta la fecha.\n"+
-                        getQuery("SELECT SUM(\"cantidad\"*\"PvP\")/2 AS \"Dinero premiado\"\n" +
+                        getQuery("SELECT SUM(\"cantidad\"*\"PVP\")/2 AS \"Dinero premiado\"\n" +
                         "	FROM \"Articulo\"\n" +
                         "	INNER JOIN (SELECT \"Codigo_Barras\",\"cantidad\"\n" +
                         "			FROM \"Ticket\"\n" +
@@ -190,7 +190,7 @@ public class Query
                         "	GROUP BY \"Descripcion\"");
             case 16:
                 return "Valor total de todos los artículos canjeados por los socios en el último mes.\n"+
-                        getQuery("SELECT SUM(\"PvP\") AS \"Dinero\"\n" +
+                        getQuery("SELECT SUM(\"PVP\") AS \"Dinero\"\n" +
                         "	FROM \"Canjea\"\n" +
                         "	INNER JOIN \"Articulo\" ON \"Canjea\".\"Codigo_Barras\" = \"Articulo\".\"Codigo_Barras\";");
             case 17:

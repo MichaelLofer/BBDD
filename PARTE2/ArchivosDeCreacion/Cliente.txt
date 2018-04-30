@@ -1,8 +1,8 @@
-﻿INSERT INTO public."Cliente"(
-            "Nombre_Usuario", "DNI", "Nombre", "Correo", "Contrasena")
-    VALUES ('El chuches', '44150783Y', 'Pepe Castello', 'qqq@hotmail.es', 'ContraseñaSegura123'),
+INSERT INTO public."Cliente"(
+            "Nombre_Usuario", "DNI", "Nombre", "Correo", "Contrasena","Puntos")
+    VALUES ('El chuches', '44150783Y', 'Pepe Castello', 'qqq@hotmail.es', 'ContraseñaSegura123',0),
 
-    ('Jordi ENP', '95551913T', 'Luis Fuentes', 'jisusesbien@gmail.com', 'KeepMeSafeBB'),
-    ('Tu gasolinero', '612447469R', 'Domingo Martes', 'vibaio@yahoo.org', 'ListoElQueLoLea'),
-    ('La gran manguera', '32491205W', 'Luisa Zaplana', 'errornotfound@gmail.net', 'ContraseñaNoValida'),
-    ('Mmmmm gasss', '48053069C', 'Marta Izquierdo', 'micorreojajaxd@hotmail.es', 'L4Bu3n4C0ntr53Ñ4JAjan0')
+    ('Jordi ENP', '95551913T', 'Luis Fuentes', 'jisusesbien@gmail.com', 'KeepMeSafeBB',0),
+    ('Tu gasolinero', '612447469R', 'Domingo Martes', 'vibaio@yahoo.org', 'ListoElQueLoLea',0),
+    ('La gran manguera', '32491205W', 'Luisa Zaplana', 'errornotfound@gmail.net', 'ContraseñaNoValida',0),
+    ('Mmmmm gasss', '48053069C', 'Marta Izquierdo', 'micorreojajaxd@hotmail.es', 'L4Bu3n4C0ntr53Ñ4JAjan0',0)
