@@ -1,0 +1,12 @@
+﻿DECLARE
+
+BEGIN
+	if NEW."Nombre_Usuario" is not null then
+		NEW."puntos" :=(select "Precio" 
+		from "Surtidor"
+		where NEW."Numero_surtidor"="Surtidor"."Numero_surtidor")*NEW."litros";
+	else
+		NEW."puntos" := null;
+	end if;
+	RETURN NEW;
+END;
