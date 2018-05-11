@@ -1,6 +1,6 @@
 /*
 Created		13/03/2018
-Modified		28/04/2018
+Modified		11/05/2018
 Project		
 Model			
 Company		
@@ -26,11 +26,6 @@ Create table "Empleado"
 	"Correo" Char(80) NOT NULL UNIQUE,
 	"Turno" Char(30) NOT NULL,
 	"Nombre" Char(60) NOT NULL,
-	"Localidad" Char(40) NOT NULL,
-	"Calle" Char(40) NOT NULL,
-	"Numero" Integer NOT NULL,
-	"Piso" Char(20),
-	"CP" Integer NOT NULL,
 	"Numero_surtidor" Integer,
 	"Tipo" Char(50),
  primary key ("DNI")
@@ -72,9 +67,8 @@ Create table "Ticket"
 	"Codigo" Char(20) NOT NULL UNIQUE,
 	"Fecha_emision" Timestamp with time zone NOT NULL UNIQUE,
 	"Tipo" Char(50) NOT NULL,
-	"Fecha_premiado" Timestamp with time zone UNIQUE,
 	"Precio_Compra" Double precision NOT NULL,
- primary key ("Codigo","Tipo")
+ primary key ("Codigo")
 ) Without Oids;
 
 
@@ -180,11 +174,37 @@ Create table "Reposta"
 Create table "Contiene"
 (
 	"Codigo" Char(20) NOT NULL,
-	"Tipo" Char(50) NOT NULL,
 	"Codigo_Barras" Char(60) NOT NULL,
 	"cantidad" Integer NOT NULL,
 	"Fecha" Timestamp with time zone NOT NULL UNIQUE,
- primary key ("Codigo","Tipo","Fecha")
+ primary key ("Codigo","Fecha")
+) Without Oids;
+
+
+Create table "Localidades"
+(
+	"CP" Integer NOT NULL,
+	"Localidad" Char(40) NOT NULL,
+ primary key ("CP")
+) Without Oids;
+
+
+Create table "Direccion"
+(
+	"Calle" Char(40) NOT NULL,
+	"Numero" Integer NOT NULL,
+	"CP" Integer NOT NULL,
+	"DNI" Char(20) NOT NULL,
+ primary key ("CP","DNI")
+) Without Oids;
+
+
+Create table "Sorteo"
+(
+	"valido" Boolean NOT NULL,
+	"Codigo" Char(20) NOT NULL,
+	"Fecha_premiado" Timestamp with time zone NOT NULL UNIQUE,
+ primary key ("Fecha_premiado")
 ) Without Oids;
 
 
@@ -206,6 +226,8 @@ Alter table "Telefono" add  foreign key ("DNI") references "Empleado" ("DNI") on
 
 Alter table "Empleado" add  foreign key ("dni_jefe") references "Empleado" ("DNI") on update cascade on delete set null;
 
+Alter table "Direccion" add  foreign key ("DNI") references "Empleado" ("DNI") on update cascade on delete cascade;
+
 Alter table "Gasolina" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete cascade;
 
 Alter table "Gasoleo" add  foreign key ("Numero_surtidor") references "Surtidor" ("Numero_surtidor") on update cascade on delete cascade;
@@ -224,7 +246,9 @@ Alter table "Oferta" add  foreign key ("Tipo") references "Tienda" ("Tipo") on u
 
 Alter table "Ticket" add  foreign key ("Tipo") references "Tienda" ("Tipo") on update cascade on delete cascade;
 
-Alter table "Contiene" add  foreign key ("Codigo","Tipo") references "Ticket" ("Codigo","Tipo") on update cascade on delete cascade;
+Alter table "Contiene" add  foreign key ("Codigo") references "Ticket" ("Codigo") on update cascade on delete cascade;
+
+Alter table "Sorteo" add  foreign key ("Codigo") references "Ticket" ("Codigo") on update cascade on delete cascade;
 
 Alter table "Canjea" add  foreign key ("Codigo_Barras") references "Articulo" ("Codigo_Barras") on update cascade on delete set null;
 
@@ -235,6 +259,8 @@ Alter table "Canjea" add  foreign key ("Nombre_Usuario") references "Cliente" ("
 Alter table "Opinion" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
 
 Alter table "Reposta" add  foreign key ("Nombre_Usuario") references "Cliente" ("Nombre_Usuario") on update cascade on delete cascade;
+
+Alter table "Direccion" add  foreign key ("CP") references "Localidades" ("CP") on update cascade on delete cascade;
 
 
 
@@ -602,11 +628,10 @@ declare
 begin
 	 
 	/* Check parent table "Ticket", when child table "Contiene" changes. */
- if new."Codigo" != old."Codigo" or new."Tipo" != old."Tipo" then
+ if new."Codigo" != old."Codigo" then
  	select count(*) into nRows
  	from "Ticket"
- 	where new."Codigo" = "Ticket"."Codigo" and 
-        			new."Tipo" = "Ticket"."Tipo";
+ 	where new."Codigo" = "Ticket"."Codigo";
  	if (nRows = 0) then
  		raise exception ''Parent does not exist in table "Ticket". Cannot update child table "Contiene".'';
  	end if;
@@ -629,6 +654,71 @@ language 'plpgsql';
 Create trigger "tu_Contiene"
 after update on "Contiene"
 for each row execute procedure "fn_tu_Contiene"();
+
+/* Referential integrity for update on table "Direccion" */
+ 
+/* Function "fn_tu_Direccion"() for trigger "tu_Direccion" */
+Create function "fn_tu_Direccion"() returns trigger as '
+declare
+	nRows integer;	
+	maxCard integer;										 
+begin
+	 
+	/* Check parent table "Localidades", when child table "Direccion" changes. */
+ if new."CP" != old."CP" then
+ 	select count(*) into nRows
+ 	from "Localidades"
+ 	where new."CP" = "Localidades"."CP";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Localidades". Cannot update child table "Direccion".'';
+ 	end if;
+ end if;	
+ /* Check parent table "Empleado", when child table "Direccion" changes. */
+ if new."DNI" != old."DNI" then
+ 	select count(*) into nRows
+ 	from "Empleado"
+ 	where new."DNI" = "Empleado"."DNI";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Empleado". Cannot update child table "Direccion".'';
+ 	end if;
+ end if;	
+ 
+return old;
+end;'
+language 'plpgsql';
+					
+/* Update trigger "tu_Direccion" for table "Direccion" */
+Create trigger "tu_Direccion"
+after update on "Direccion"
+for each row execute procedure "fn_tu_Direccion"();
+
+/* Referential integrity for update on table "Sorteo" */
+ 
+/* Function "fn_tu_Sorteo"() for trigger "tu_Sorteo" */
+Create function "fn_tu_Sorteo"() returns trigger as '
+declare
+	nRows integer;	
+	maxCard integer;										 
+begin
+	 
+	/* Check parent table "Ticket", when child table "Sorteo" changes. */
+ if new."Codigo" != old."Codigo" then
+ 	select count(*) into nRows
+ 	from "Ticket"
+ 	where new."Codigo" = "Ticket"."Codigo";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Ticket". Cannot update child table "Sorteo".'';
+ 	end if;
+ end if;	
+ 
+return old;
+end;'
+language 'plpgsql';
+					
+/* Update trigger "tu_Sorteo" for table "Sorteo" */
+Create trigger "tu_Sorteo"
+after update on "Sorteo"
+for each row execute procedure "fn_tu_Sorteo"();
 
 
 
@@ -974,11 +1064,10 @@ declare
 	maxCard integer;										 
 begin
 	/* Check parent table "Ticket" when values inserted into child table "Contiene" */
- if new."Codigo" is not null and new."Tipo" is not null then
+ if new."Codigo" is not null then
  	select count(*) into nRows
  	from "Ticket"
- 	where new."Codigo" = "Ticket"."Codigo" and 
-        			new."Tipo" = "Ticket"."Tipo";
+ 	where new."Codigo" = "Ticket"."Codigo";
  	if (nRows = 0) then
  		raise exception ''Parent does not exist in table "Ticket". Cannot insert values into child table "Contiene".'';
  	end if;	
@@ -1001,6 +1090,69 @@ language 'plpgsql';
 Create trigger "ti_Contiene"
 before insert on "Contiene"
 for each row execute procedure "fn_ti_Contiene"();
+
+/* Referential integrity for insert on table "Direccion" */
+ 
+/* Function "fn_ti_Direccion"() for trigger "ti_Direccion" */
+Create function "fn_ti_Direccion"() returns trigger as '
+declare
+	nRows integer;	
+	maxCard integer;										 
+begin
+	/* Check parent table "Localidades" when values inserted into child table "Direccion" */
+ if new."CP" is not null then
+ 	select count(*) into nRows
+ 	from "Localidades"
+ 	where new."CP" = "Localidades"."CP";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Localidades". Cannot insert values into child table "Direccion".'';
+ 	end if;	
+ end if;	
+ /* Check parent table "Empleado" when values inserted into child table "Direccion" */
+ if new."DNI" is not null then
+ 	select count(*) into nRows
+ 	from "Empleado"
+ 	where new."DNI" = "Empleado"."DNI";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Empleado". Cannot insert values into child table "Direccion".'';
+ 	end if;	
+ end if;	
+ 
+return new;
+end;'
+language 'plpgsql';
+					
+/* Insert trigger "ti_Direccion" for table "Direccion" */
+Create trigger "ti_Direccion"
+before insert on "Direccion"
+for each row execute procedure "fn_ti_Direccion"();
+
+/* Referential integrity for insert on table "Sorteo" */
+ 
+/* Function "fn_ti_Sorteo"() for trigger "ti_Sorteo" */
+Create function "fn_ti_Sorteo"() returns trigger as '
+declare
+	nRows integer;	
+	maxCard integer;										 
+begin
+	/* Check parent table "Ticket" when values inserted into child table "Sorteo" */
+ if new."Codigo" is not null then
+ 	select count(*) into nRows
+ 	from "Ticket"
+ 	where new."Codigo" = "Ticket"."Codigo";
+ 	if (nRows = 0) then
+ 		raise exception ''Parent does not exist in table "Ticket". Cannot insert values into child table "Sorteo".'';
+ 	end if;	
+ end if;	
+ 
+return new;
+end;'
+language 'plpgsql';
+					
+/* Insert trigger "ti_Sorteo" for table "Sorteo" */
+Create trigger "ti_Sorteo"
+before insert on "Sorteo"
+for each row execute procedure "fn_ti_Sorteo"();
 
 
 
