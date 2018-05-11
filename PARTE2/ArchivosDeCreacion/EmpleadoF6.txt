@@ -1,11 +1,7 @@
-INSERT INTO public."Empleado"("DNI", dni_jefe, "Sexo", "Correo", "Turno", "Nombre", "Localidad", 
-            "Calle", "Numero", "Piso", "CP", "Numero_surtidor", "Tipo")
+INSERT INTO public."Empleado"("DNI", dni_jefe, "Sexo", "Correo", "Turno", "Nombre", "Numero_surtidor", "Tipo")
 
-    VALUES('72996324M', '38544138W', 'HOMBRE', 'kim.com@mega.nz', 'MAÑANA', 'Kim Dotcom', 'Queenstown', 'Kiel',
-            2, '5A', 12345, null, 'Panaderia'),
+    VALUES('72996324M', '38544138W', 'HOMBRE', 'kim.com@mega.nz', 'MAÑANA', 'Kim Dotcom', null, 'Panaderia'),
 
-    ('10712269L', '38544138W', 'MUJER', 'olilueva@gmail.com', 'MAÑANA', 'Olimpia Luevano Gaona', 'Savignao', 'Siles',
-            71, '8B', 18197, null, 'Cafeteria'),
+    ('10712269L', '38544138W', 'MUJER', 'olilueva@gmail.com', 'MAÑANA', 'Olimpia Luevano Gaona', null, 'Cafeteria'),
 
-    ('80917801Y', '38544138W', 'MUJER', 'yoko@ono.es', 'TARDE', 'Yoconda Cruz Carbajal', 'Piedrabuena', 'San Sebastian',
-            0, null, 13100, null, 'Cafeteria')
+    ('80917801Y', '38544138W', 'MUJER', 'yoko@ono.es', 'TARDE', 'Yoconda Cruz Carbajal', null, 'Cafeteria')

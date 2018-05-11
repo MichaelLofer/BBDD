@@ -1,1 +1,12 @@
-﻿
+﻿DECLARE
+
+BEGIN
+	if NEW."Nombre_Usuario" is not null then
+		NEW."puntos" :=((select "Surtidor"."Precio" 
+		from "Surtidor"
+		where NEW."Numero_surtidor"="Surtidor"."Numero_surtidor")*NEW."litros")::integer;
+	else
+		NEW."puntos" := null;
+	end if;
+	RETURN NEW;
+END;
