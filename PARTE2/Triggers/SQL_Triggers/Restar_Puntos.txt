@@ -1,0 +1,5 @@
+CREATE TRIGGER "Restar_Puntos"
+  BEFORE INSERT
+  ON public."Canjea"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Restar_Puntos_Canjea"();

@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Precio"
+  BEFORE INSERT OR UPDATE
+  ON public."Surtidor"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Precio_Surtidor"();

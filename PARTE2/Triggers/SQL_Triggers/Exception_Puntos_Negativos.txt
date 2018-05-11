@@ -1,0 +1,5 @@
+CREATE TRIGGER "Exception_Puntos_Negativos"
+  BEFORE INSERT OR UPDATE
+  ON public."Cliente"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Exception_Cliente_Puntos_Negativos"();

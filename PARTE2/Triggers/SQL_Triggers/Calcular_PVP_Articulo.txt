@@ -1,0 +1,15 @@
+CREATE OR REPLACE FUNCTION public."Calcular_PVP_Articulo"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	IF(NEW."Precio_sin_IVA"<=0) THEN
+		RAISE EXCEPTION 'El precio no puede ser negativo';
+	END IF;
+	NEW."PVP" := (NEW."Precio_sin_IVA"*121/100);
+        RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Calcular_PVP_Articulo"()
+  OWNER TO postgres;

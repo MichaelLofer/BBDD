@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Comprobar_Puntos_Opinion"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Puntos" < 0 or NEW."Puntos" >10 then
+		RAISE EXCEPTION 'LOS PUNTOS TIENEN QUE ESTAR ENTRE 0 Y 10';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Comprobar_Puntos_Opinion"()
+  OWNER TO postgres;

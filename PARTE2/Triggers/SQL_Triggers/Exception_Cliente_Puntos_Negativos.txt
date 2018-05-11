@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Exception_Cliente_Puntos_Negativos"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Puntos" < 0 then
+		RAISE EXCEPTION 'LOS PUNTOS NO PUEDEN SER NEGATIVOS';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Exception_Cliente_Puntos_Negativos"()
+  OWNER TO postgres;

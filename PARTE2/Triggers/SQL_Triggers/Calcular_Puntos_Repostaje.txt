@@ -1,0 +1,18 @@
+CREATE OR REPLACE FUNCTION public."Calcular_Puntos_Repostaje"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Nombre_Usuario" is not null then
+		NEW."puntos" :=((select "Surtidor"."Precio" 
+		from "Surtidor"
+		where NEW."Numero_surtidor"="Surtidor"."Numero_surtidor")*NEW."litros")::integer;
+	else
+		NEW."puntos" := null;
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Calcular_Puntos_Repostaje"()
+  OWNER TO postgres;

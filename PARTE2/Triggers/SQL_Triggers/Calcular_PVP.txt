@@ -1,0 +1,5 @@
+CREATE TRIGGER "Calcular_PVP"
+  BEFORE INSERT OR UPDATE
+  ON public."Articulo"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Calcular_PVP_Articulo"();

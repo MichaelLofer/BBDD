@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Comprobar_Litros_Respecto_Capacidad"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."litros" < 0 then
+		RAISE EXCEPTION 'LOS LITROS REPOSTADOS NO PUEDEN SER NEGATIVOS';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Comprobar_Litros_Respecto_Capacidad"()
+  OWNER TO postgres;

@@ -1,0 +1,5 @@
+CREATE TRIGGER "Modificar_Puntos_Canjeados"
+  BEFORE UPDATE
+  ON public."Canjea"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Modificar_Puntos_Canjea"();

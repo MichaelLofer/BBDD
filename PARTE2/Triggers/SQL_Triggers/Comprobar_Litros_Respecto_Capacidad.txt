@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Litros_Respecto_Capacidad"
+  BEFORE INSERT OR UPDATE
+  ON public."Reposta"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Litros_Respecto_Capacidad"();
