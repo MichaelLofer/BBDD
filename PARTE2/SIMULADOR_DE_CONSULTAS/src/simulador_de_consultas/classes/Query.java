@@ -183,9 +183,9 @@ public class Query
                         "	ORDER BY \"Cantidad\" DESC");
             case 15:
                 return "Porcentaje de surtidores de gasolina, gasoil, GLP e Hidrógeno que existen en la gasolinera.\n"+
-                        getQuery("SELECT \"Descripcion\", COUNT(*)*100/\n" +
+                        getQuery("SELECT \"Descripcion\", (COUNT(*)*100/\n" +
                         "	(SELECT COUNT(*)\n" +
-                        "		FROM \"Surtidor\")AS \"Porcentaje\"\n" +
+                        "		FROM \"Surtidor\"))AS \"Porcentaje\"\n" +
                         "	FROM \"Surtidor\"\n" +
                         "	GROUP BY \"Descripcion\"");
             case 16:
