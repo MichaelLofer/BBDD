@@ -85,6 +85,9 @@ public class Asker extends javax.swing.JFrame
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         display.setEditable(false);
         display.setColumns(20);
         display.setRows(5);
@@ -447,6 +450,9 @@ public class Asker extends javax.swing.JFrame
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         jPanel2.add(c21, gridBagConstraints);
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         consulta.setColumns(20);
         consulta.setRows(5);
