@@ -1,0 +1,5 @@
+CREATE TRIGGER "Calcular_Puntos"
+  BEFORE INSERT OR UPDATE
+  ON public."Reposta"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Calcular_Puntos_Repostaje"();

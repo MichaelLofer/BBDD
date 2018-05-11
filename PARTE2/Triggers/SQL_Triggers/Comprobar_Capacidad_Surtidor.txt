@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Comprobar_Capacidad_Surtidor"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Capacidad" <= 0 then
+		RAISE EXCEPTION 'LA CAPACIDAD DEL SURTIDOR TIENE QUE SER MAYOR QUE CERO';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Comprobar_Capacidad_Surtidor"()
+  OWNER TO postgres;

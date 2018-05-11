@@ -1,0 +1,5 @@
+CREATE TRIGGER "Modificar_Puntos_Repostaje"
+  BEFORE UPDATE
+  ON public."Reposta"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Modificar_Puntos_Cliente_Repostaje"();

@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Comprobar_Duracion_Oferta"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Duracion" <= 0 then
+		RAISE EXCEPTION 'LA OFERTA TIENE QUE DURAR AL MENOS UN DIA';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Comprobar_Duracion_Oferta"()
+  OWNER TO postgres;

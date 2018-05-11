@@ -1,0 +1,5 @@
+CREATE TRIGGER "Canjear_Puntos_Positivos"
+  BEFORE INSERT OR UPDATE
+  ON public."Canjea"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Canjear_Puntos_Positivos"();

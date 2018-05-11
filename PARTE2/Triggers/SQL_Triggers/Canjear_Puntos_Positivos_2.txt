@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION public."Canjear_Puntos_Positivos"()
+  RETURNS trigger AS
+$BODY$DECLARE
+
+BEGIN
+	if NEW."Puntos_canjeados" < 0 then
+		RAISE EXCEPTION 'LOS PUNTOS CANJEADOS NO PUEDEN SER NEGATIVOS';
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Canjear_Puntos_Positivos"()
+  OWNER TO postgres;

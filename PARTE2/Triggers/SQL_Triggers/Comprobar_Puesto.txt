@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Puesto"
+  BEFORE INSERT OR UPDATE
+  ON public."Empleado"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Puesto_Empleado"();

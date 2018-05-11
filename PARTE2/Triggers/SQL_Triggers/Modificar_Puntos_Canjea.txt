@@ -1,0 +1,23 @@
+CREATE OR REPLACE FUNCTION public."Modificar_Puntos_Canjea"()
+  RETURNS trigger AS
+$BODY$DECLARE
+puntos_cliente integer;
+diferencia integer;
+
+BEGIN
+	if NEW."Nombre_Usuario" is not null then
+		diferencia := OLD."Puntos_canjeados" - NEW."Puntos_canjeados";
+		
+		puntos_cliente := (select "Cliente"."Puntos"
+		from "Cliente"
+		where NEW."Nombre_Usuario"="Cliente"."Nombre_Usuario");
+		puntos_cliente := puntos_cliente + diferencia;
+		
+		UPDATE "Cliente" set "Puntos" = puntos_cliente where "Cliente"."Nombre_Usuario" = NEW."Nombre_Usuario";
+	end if;
+	RETURN NEW;
+END;$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public."Modificar_Puntos_Canjea"()
+  OWNER TO postgres;

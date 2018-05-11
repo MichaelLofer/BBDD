@@ -1,0 +1,5 @@
+CREATE TRIGGER "Sumar_Puntos"
+  BEFORE INSERT
+  ON public."Reposta"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Sumar_Puntos_Clientes"();

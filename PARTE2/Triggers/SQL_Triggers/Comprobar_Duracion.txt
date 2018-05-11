@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Duracion"
+  BEFORE INSERT OR UPDATE
+  ON public."Oferta"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Duracion_Oferta"();

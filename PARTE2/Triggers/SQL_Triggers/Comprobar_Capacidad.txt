@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Capacidad"
+  BEFORE INSERT OR UPDATE
+  ON public."Surtidor"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Capacidad_Surtidor"();
