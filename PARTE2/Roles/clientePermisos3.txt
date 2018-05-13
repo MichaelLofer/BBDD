@@ -1,0 +1,4 @@
+GRANT SELECT ON TABLE public."Cliente" TO GROUP "Cliente";
+GRANT UPDATE("Nombre") ON public."Cliente" TO GROUP "Cliente";
+GRANT UPDATE("Correo") ON public."Cliente" TO GROUP "Cliente";
+GRANT UPDATE("Contrasena") ON public."Cliente" TO GROUP "Cliente";

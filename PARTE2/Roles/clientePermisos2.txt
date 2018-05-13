@@ -1,0 +1,2 @@
+GRANT SELECT ON TABLE public."Articulo" TO GROUP "Cliente";
+GRANT SELECT ON TABLE public."Canjea" TO GROUP "Cliente";

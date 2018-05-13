@@ -1,0 +1,1 @@
+GRANT INSERT("Fecha_Reapertura") ON public."Surtidor" TO GROUP "Empleado";

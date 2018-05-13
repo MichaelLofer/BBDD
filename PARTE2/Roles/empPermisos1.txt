@@ -1,0 +1,3 @@
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Canjea" TO GROUP "Empleado";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Reposta" TO GROUP "Empleado";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Ticket" TO GROUP "Empleado";

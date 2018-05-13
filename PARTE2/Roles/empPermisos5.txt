@@ -1,0 +1,3 @@
+GRANT SELECT("Sexo"), UPDATE("Sexo") ON public."Empleado" TO GROUP "Empleado";
+GRANT SELECT("Correo"), UPDATE("Correo") ON public."Empleado" TO GROUP "Empleado";
+GRANT SELECT("Nombre"), UPDATE("Nombre") ON public."Empleado" TO GROUP "Empleado";

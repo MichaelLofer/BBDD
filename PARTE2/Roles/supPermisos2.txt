@@ -1,0 +1,6 @@
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Articulo" TO GROUP "Supervisor";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Cliente" TO GROUP "Supervisor";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Empleado" TO GROUP "Supervisor";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Surtidor" TO GROUP "Supervisor";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Ticket" TO GROUP "Supervisor";
+GRANT SELECT, UPDATE, INSERT ON TABLE public."Tienda" TO GROUP "Supervisor";
