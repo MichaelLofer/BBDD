@@ -1,0 +1,2 @@
+DELETE FROM public."Cliente"
+ WHERE "DNI"='612447469R';

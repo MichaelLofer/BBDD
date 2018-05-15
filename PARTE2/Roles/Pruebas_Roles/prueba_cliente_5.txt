@@ -1,0 +1,3 @@
+UPDATE public."Cliente"
+   SET "Puntos"=500000
+ WHERE "DNI"='44150782Y';

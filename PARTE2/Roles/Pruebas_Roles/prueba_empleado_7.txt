@@ -1,0 +1,3 @@
+UPDATE public."Surtidor"
+   SET "Descripcion"='GASOLINA'
+ WHERE "Numero_surtidor"=1;

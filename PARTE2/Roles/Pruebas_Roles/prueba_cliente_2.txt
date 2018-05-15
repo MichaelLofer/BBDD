@@ -1,0 +1,2 @@
+DELETE FROM public."Opinion"
+ WHERE "Puntos"=9;

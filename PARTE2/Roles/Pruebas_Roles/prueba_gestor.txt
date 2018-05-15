@@ -1,0 +1,5 @@
+Create table "prueba"
+(
+	"Input" Char(20) not null unique,
+primary key ("Input")
+) without oids;

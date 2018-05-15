@@ -1,0 +1,3 @@
+INSERT INTO public."Cliente"(
+            "Nombre_Usuario", "DNI", "Nombre", "Correo", "Contrasena","Puntos")
+    VALUES ('El chuchas', '44150782Y', 'Pepe Pepa', 'tupepaso@hotmail.es', 'Patatas_fritas',0);
