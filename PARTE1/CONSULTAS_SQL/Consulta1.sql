@@ -1,2 +1,2 @@
-﻿SELECT "Codigo_Barras", "PvP"
+﻿SELECT "Codigo_Barras", "PVP"
 	FROM "Articulo"

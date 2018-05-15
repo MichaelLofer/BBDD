@@ -101,10 +101,9 @@ public class Query
                         "	FROM \"Surtidor\"");
             case 3:
                 return "Total del dinero facturado por las tiendas de la gasolinera desde la implementación de la base de datos.\n"+
-                        getQuery("SELECT \"Tipo\", sum (\"PVP\"*\"cantidad\") as \"Dinero\"\n" +
+                        getQuery("SELECT sum (\"PVP\"*\"cantidad\") as \"Dinero\"\n" +
                         "	FROM \"Contiene\"\n" +
-                        "	INNER JOIN \"Articulo\" ON \"Contiene\".\"Codigo_Barras\" = \"Articulo\".\"Codigo_Barras\"\n" +
-                        "	GROUP BY \"Tipo\"");
+                        "	INNER JOIN \"Articulo\" ON \"Contiene\".\"Codigo_Barras\" = \"Articulo\".\"Codigo_Barras\"");
             case 4:
                 return "Nombre de los empleados de las tiendas que trabajan en turno de mañana.\n"+
                         getQuery("SELECT \"Nombre\"\n" +
@@ -126,13 +125,10 @@ public class Query
                         "	");
             case 7:
                 return "Importe total devuelto en los tickets en todos los sorteos realizados hasta la fecha.\n"+
-                        getQuery("SELECT SUM(\"cantidad\"*\"PVP\")/2 AS \"Dinero premiado\"\n" +
-                        "	FROM \"Articulo\"\n" +
-                        "	INNER JOIN (SELECT \"Codigo_Barras\",\"cantidad\"\n" +
-                        "			FROM \"Ticket\"\n" +
-                        "			INNER JOIN \"Contiene\" ON \"Ticket\".\"Codigo\" = \"Contiene\".\"Codigo\"\n" +
-                        "			WHERE \"Fecha_premiado\" IS NOT NULL) AS \"TABLA\" ON \"Articulo\".\"Codigo_Barras\" = \"TABLA\".\"Codigo_Barras\"\n" +
-                        "	");
+                        getQuery("SELECT SUM(\"Precio_Compra\")/2 AS \"Dinero premiado\"\n" +
+                        "	FROM \"Ticket\"\n" +
+                        "	INNER JOIN \"Sorteo\" ON \"Ticket\".\"Codigo\" = \"Sorteo\".\"Codigo\"\n" +
+                        "	where valido = true");
             case 8:
                 return "Grado de satisfacción medio de las opiniones que los clientes han realizado por internet, mostrando la puntuación media.\n"+
                         getQuery("SELECT AVG(\"Puntos\") AS \"OPINION MEDIA\"\n" +
@@ -147,7 +143,7 @@ public class Query
                 return "Tienda en la que más tickets han sido premiados hasta la fecha.\n"+
                         getQuery("SELECT \"Tipo\", COUNT(*) AS \"TIQUETS PREMIADOS\"\n" +
                         "	FROM \"Ticket\"\n" +
-                        "	WHERE \"Fecha_premiado\" IS NOT NULL\n" +
+                        "	INNER JOIN \"Sorteo\" ON \"Ticket\".\"Codigo\" = \"Sorteo\".\"Codigo\"\n" +
                         "	GROUP BY \"Tipo\"\n" +
                         "	ORDER BY \"TIQUETS PREMIADOS\" DESC\n" +
                         "	LIMIT 1");
@@ -226,9 +222,8 @@ public class Query
                         "	FROM \"Canjea\"\n" +
                         "	INNER JOIN \"Contiene\" ON \"Canjea\".\"Codigo_Barras\" = \"Contiene\".\"Codigo_Barras\"\n" +
                         "	WHERE \"Canjea\".\"Codigo_Barras\" NOT IN (SELECT \"Codigo_Barras\"\n" +
-                        "							FROM \"Contiene\"\n" +
-                        "							INNER JOIN \"Ticket\" ON \"Contiene\".\"Codigo\" = \"Ticket\".\"Codigo\"\n" +
-                        "							WHERE \"Ticket\".\"Fecha_premiado\" IS NOT NULL)");
+                        "							FROM \"Ticket\"\n" +
+                        "							INNER JOIN \"Contiene\" ON \"Ticket\".\"Codigo\" = \"Contiene\".\"Codigo\" INNER JOIN \"Sorteo\" ON \"Ticket\".\"Codigo\" = \"Sorteo\".\"Codigo\")");
             default:
                 return "INDEX ERROR";
         }
