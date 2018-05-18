@@ -1,0 +1,5 @@
+CREATE TRIGGER "Comprobar_Validez"
+  BEFORE INSERT OR UPDATE
+  ON public."Sorteo"
+  FOR EACH ROW
+  EXECUTE PROCEDURE public."Comprobar_Ticket_Valido"();
