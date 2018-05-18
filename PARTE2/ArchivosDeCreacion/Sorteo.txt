@@ -1,6 +1,5 @@
-
 INSERT INTO public."Sorteo"(
 	valido, "Codigo", "Fecha_premiado")
-	VALUES (true, 'AAA1', '1014-01-04 12:23:54'),
-	 (true, 'AAA7', '2022-09-09 03:16:54'),
-	 (true, 'AAA9', '2110-11-27 05:06:44');
+	VALUES (true, 'AAA1', '1014-01-04'),
+	 (true, 'AAA7', '2022-09-04'),
+	 (true, 'AAA9', '2110-11-25');

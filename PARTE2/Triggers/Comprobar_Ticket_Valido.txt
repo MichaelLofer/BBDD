@@ -1,0 +1,13 @@
+DECLARE
+	dias integer;
+
+BEGIN
+	dias:=extract(day from('2018-05-21 00:00:00' - NEW."Fecha_premiado"));
+	--RAISE NOTICE 'Valor dias = %', dias;
+	IF (dias>365) THEN
+		NEW."valido"=false;
+	ELSE
+		NEW."valido"=true;
+	END IF;
+	RETURN NEW;
+END;
